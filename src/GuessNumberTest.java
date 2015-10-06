@@ -59,6 +59,14 @@ public class GuessNumberTest {
         assertEquals(io.showUserCorrectGuess(2),game.showUserCorrectGuess(io.getInput()));
     }
 
+    @Test
+    public void numbersMatchToRandom() {
+        FakeIO io = getFakeIO(asList(2));
+        Randomizer randomizer = new Randomizer();
+        GuessNumber game = new GuessNumber(io, randomizer.numberGenerator(2));
+        assertTrue(game.numberMatch(io.getInput()));
+    }
+
     private FakeIO getFakeIO(List<Integer> numbers) {
         return new FakeIO(numbers);
     }

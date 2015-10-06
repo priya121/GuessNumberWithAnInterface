@@ -7,8 +7,4 @@ public class Randomizer {
         int value = randomGenerator.nextInt(max);
         return value;
     }
-
-
-
-
 }
