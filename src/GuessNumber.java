@@ -1,12 +1,12 @@
 public class GuessNumber {
 
-    private ioInterface io;
+    private IoInterface io;
     private int myNumber;
     private boolean isOver;
     String userPrompt;
     private int tries;
 
-    public GuessNumber(ioInterface io, int myNumber) {
+    public GuessNumber(IoInterface io, int myNumber) {
         this.io = io;
         this.myNumber = 2;
         this.isOver = false;
