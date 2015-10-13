@@ -27,7 +27,7 @@ public class GuessNumber {
     }
 
     public boolean numberMatch(int usersGuess) {
-        if (usersGuess == myNumber || tries == 6) {
+        if (usersGuess == myNumber || tries == 5) {
             io.showUserCorrectGuess(usersGuess);
             return isOver = true;
         } else {

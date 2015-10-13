@@ -56,14 +56,17 @@ public class GuessNumberTest {
     public void promptsUser() {
         FakeIO io = getFakeIO(asList(2));
         GuessNumber game = new GuessNumber(io, 2);
-        assertEquals(io.showUserCorrectGuess(2),game.showUserCorrectGuess(io.getInput()));
+        assertEquals(io.showUserCorrectGuess(2), game.showUserCorrectGuess(io.getInput()));
     }
 
     @Test
     public void numbersMatchToRandom() {
-        FakeIO io = getFakeIO(asList(2));
         Randomizer randomizer = new Randomizer();
-        GuessNumber game = new GuessNumber(io, randomizer.numberGenerator(2));
+
+        int myNumber = randomizer.numberGenerator(3);
+        FakeIO io = getFakeIO(asList(20, myNumber));
+        System.out.println("number: " + myNumber);
+        GuessNumber game = new GuessNumber(io, myNumber);
         assertTrue(game.numberMatch(io.getInput()));
     }
 
@@ -71,7 +74,7 @@ public class GuessNumberTest {
         return new FakeIO(numbers);
     }
 
-    private class FakeIO implements ioInterface {
+    private class FakeIO implements IoInterface {
         private LinkedList<Integer> numbers;
 
         public FakeIO(List<Integer> numbers) {
@@ -81,6 +84,11 @@ public class GuessNumberTest {
         @Override
         public int getInput() {
             return numbers.pop();
+        }
+
+        @Override
+        public String initialPrompt() {
+            return "Hi! Enter a number from 0-10. You have six tries.";
         }
 
         @Override
